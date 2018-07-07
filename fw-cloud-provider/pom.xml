@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MIT License
+
+Copyright (c) 2018 liuweijw
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.github.liuweijw.provider</groupId>
+	<artifactId>fw-cloud-provider</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>liuweijw cloud project</name>
+	<url>https://github.com/liuweijw/fw-cloud-starter</url>
+	<description>拆分spring-cloud 相关组件和部分封装</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+		<spring-boot.version>2.0.3.RELEASE</spring-boot.version>
+		<spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+		<jasypt-spring-boot-starter.version>2.0.0</jasypt-spring-boot-starter.version>
+		<lombok.version>1.18.0</lombok.version>
+		<swagger2.version>2.9.2</swagger2.version>
+		<jjwt>0.9.0</jjwt>
+		<fastjson>1.2.47</fastjson>
+		<mysql.version>5.1.46</mysql.version>
+		<querydsl.version>4.2.1</querydsl.version>
+		<commons-collections4.version>4.1</commons-collections4.version>
+        <commons-lang3.version>3.7</commons-lang3.version>
+        <commons-compress.version>1.17</commons-compress.version>
+		<commons-io.version>2.6</commons-io.version>
+		<commons-codec.version>1.11</commons-codec.version>
+		<ttl.version>2.2.0</ttl.version>
+		<zuul-ratelimit>LATEST</zuul-ratelimit>
+		<hutool-all>3.3.2</hutool-all>
+		<user-agent-utils.version>1.21</user-agent-utils.version>
+		<cloud-commons.version>1.0.6-SNAPSHOT</cloud-commons.version>
+		<cloud-provider.version>1.0.0-SNAPSHOT</cloud-provider.version>
+		<hibernate.validator.version>6.0.10.Final</hibernate.validator.version>
+		<hibernate.core.version>5.3.1.Final</hibernate.core.version>
+	</properties>
+
+	<modules>
+		<module>fw-cloud-provider-core</module>
+		<module>fw-cloud-provider-config</module>
+		<module>fw-cloud-provider-id</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- spring boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- spring cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+			<!-- 远程依赖 // https://github.com/liuweijw/cloud-commons.git -->
+			<dependency>
+				<groupId>com.github.liuweijw.commons</groupId>
+				<artifactId>cloud-commons-utils</artifactId> 
+				<version>${cloud-commons.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.liuweijw.commons</groupId>
+				<artifactId>cloud-commons-base</artifactId>
+				<version>${cloud-commons.version}</version>
+			</dependency>  
+			<dependency>
+				<groupId>com.github.liuweijw.commons</groupId>
+				<artifactId>cloud-commons-pay</artifactId>
+				<version>${cloud-commons.version}</version>
+			</dependency>
+			
+			<!-- 远程依赖 // https://github.com/liuweijw/fw-cloud-starter.git -->
+			<dependency>
+				<groupId>com.github.liuweijw.provider</groupId>
+				<artifactId>fw-cloud-provider-config</artifactId> 
+				<version>${cloud-provider.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.liuweijw.provider</groupId>
+				<artifactId>fw-cloud-provider-core</artifactId> 
+				<version>${cloud-provider.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.liuweijw.provider</groupId>
+				<artifactId>fw-cloud-provider-file</artifactId> 
+				<version>${cloud-provider.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.liuweijw.provider</groupId>
+				<artifactId>fw-cloud-provider-id</artifactId> 
+				<version>${cloud-provider.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.liuweijw.provider</groupId>
+				<artifactId>fw-cloud-provider-rabbitmq</artifactId> 
+				<version>${cloud-provider.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.liuweijw.provider</groupId>
+				<artifactId>fw-cloud-provider-redis</artifactId> 
+				<version>${cloud-provider.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.liuweijw.provider</groupId>
+				<artifactId>fw-cloud-provider-rest</artifactId> 
+				<version>${cloud-provider.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.liuweijw.provider</groupId>
+				<artifactId>fw-cloud-provider-swagger</artifactId> 
+				<version>${cloud-provider.version}</version>
+			</dependency>
+
+			<!-- swagger api 文档 -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${swagger2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${swagger2.version}</version>
+			</dependency>
+
+			<!-- lombok -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+			</dependency>
+
+			<!-- mysql -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+
+			<!-- jjwt -->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt</artifactId>
+				<version>${jjwt}</version>
+			</dependency>
+
+			<!-- json -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson}</version>
+			</dependency>
+			
+			<!-- jasypt config file -->
+			<dependency>
+				<groupId>com.github.ulisesbocchio</groupId>
+				<artifactId>jasypt-spring-boot-starter</artifactId>
+				<version>${jasypt-spring-boot-starter.version}</version>
+			</dependency>
+			
+			<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>${hibernate.validator.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${hibernate.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>${hibernate.core.version}</version>
+			</dependency>
+
+			<!-- apache commons -->
+			<dependency>
+			    <groupId>commons-codec</groupId>
+			    <artifactId>commons-codec</artifactId>
+			    <version>${commons-codec.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.apache.commons</groupId>
+			    <artifactId>commons-collections4</artifactId>
+			    <version>${commons-collections4.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.apache.commons</groupId>
+			    <artifactId>commons-lang3</artifactId>
+			    <version>${commons-lang3.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.apache.commons</groupId>
+			    <artifactId>commons-compress</artifactId>
+			    <version>${commons-compress.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+			
+			<!-- querydsl -->
+			<dependency>
+				<groupId>com.querydsl</groupId>
+				<artifactId>querydsl-core</artifactId>
+				<version>${querydsl.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.querydsl</groupId>
+				<artifactId>querydsl-apt</artifactId>
+				<version>${querydsl.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.querydsl</groupId>
+				<artifactId>querydsl-jpa</artifactId>
+				<version>${querydsl.version}</version>
+			</dependency>
+
+			<!-- user-agent -->
+			<dependency>
+	            <groupId>eu.bitwalker</groupId>
+	            <artifactId>UserAgentUtils</artifactId>
+	            <version>${user-agent-utils.version}</version>
+	        </dependency>
+	        
+	        <!-- hutool-util -->
+			<dependency>
+				<groupId>com.xiaoleilu</groupId>
+				<artifactId>hutool-all</artifactId>
+				<version>${hutool-all}</version>
+			</dependency>
+			
+			<!-- tt -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>transmittable-thread-local</artifactId>
+				<version>${ttl.version}</version>
+			</dependency>
+			
+		</dependencies>
+	</dependencyManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>sonatype-releases</id>
+			<name>sonatype repository</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+		</repository>
+		<snapshotRepository>
+			<id>sonatype-snapshots</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>aliyun</id>
+			<name>aliyun</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+		</repository>
+		<repository>
+			<id>oss-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-compiler-plugin</artifactId>
+	                <version>${maven-compiler-plugin.version}</version>
+	                <configuration>
+	                    <source>${java.version}</source>
+	                    <target>${java.version}</target>
+	                    <encoding>${project.build.sourceEncoding}</encoding>
+	                </configuration>
+	            </plugin>
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-source-plugin</artifactId>
+	                <version>${maven-source-plugin.version}</version>
+	                <executions>
+	                    <execution>
+	                        <id>attach-sources</id>
+	                        <goals>
+	                            <goal>jar</goal>
+	                        </goals>
+	                    </execution>
+	                </executions>
+	            </plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
