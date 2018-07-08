@@ -66,6 +66,7 @@ SOFTWARE. -->
 	<modules>
 		<module>fw-cloud-provider-core</module>
 		<module>fw-cloud-provider-config</module>
+		<module>fw-cloud-provider-redis</module>
 		<module>fw-cloud-provider-id</module>
 	</modules>
 
@@ -91,59 +92,59 @@ SOFTWARE. -->
 			<!-- 远程依赖 // https://github.com/liuweijw/cloud-commons.git -->
 			<dependency>
 				<groupId>com.github.liuweijw.commons</groupId>
-				<artifactId>cloud-commons-utils</artifactId> 
+				<artifactId>cloud-commons-utils</artifactId>
 				<version>${cloud-commons.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.liuweijw.commons</groupId>
 				<artifactId>cloud-commons-base</artifactId>
 				<version>${cloud-commons.version}</version>
-			</dependency>  
+			</dependency>
 			<dependency>
 				<groupId>com.github.liuweijw.commons</groupId>
 				<artifactId>cloud-commons-pay</artifactId>
 				<version>${cloud-commons.version}</version>
 			</dependency>
-			
+
 			<!-- 远程依赖 // https://github.com/liuweijw/fw-cloud-starter.git -->
 			<dependency>
 				<groupId>com.github.liuweijw.provider</groupId>
-				<artifactId>fw-cloud-provider-config</artifactId> 
+				<artifactId>fw-cloud-provider-config</artifactId>
 				<version>${cloud-provider.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.liuweijw.provider</groupId>
-				<artifactId>fw-cloud-provider-core</artifactId> 
+				<artifactId>fw-cloud-provider-core</artifactId>
 				<version>${cloud-provider.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.liuweijw.provider</groupId>
-				<artifactId>fw-cloud-provider-file</artifactId> 
+				<artifactId>fw-cloud-provider-file</artifactId>
 				<version>${cloud-provider.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.liuweijw.provider</groupId>
-				<artifactId>fw-cloud-provider-id</artifactId> 
+				<artifactId>fw-cloud-provider-id</artifactId>
 				<version>${cloud-provider.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.liuweijw.provider</groupId>
-				<artifactId>fw-cloud-provider-rabbitmq</artifactId> 
+				<artifactId>fw-cloud-provider-rabbitmq</artifactId>
 				<version>${cloud-provider.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.liuweijw.provider</groupId>
-				<artifactId>fw-cloud-provider-redis</artifactId> 
+				<artifactId>fw-cloud-provider-redis</artifactId>
 				<version>${cloud-provider.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.liuweijw.provider</groupId>
-				<artifactId>fw-cloud-provider-rest</artifactId> 
+				<artifactId>fw-cloud-provider-rest</artifactId>
 				<version>${cloud-provider.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.liuweijw.provider</groupId>
-				<artifactId>fw-cloud-provider-swagger</artifactId> 
+				<artifactId>fw-cloud-provider-swagger</artifactId>
 				<version>${cloud-provider.version}</version>
 			</dependency>
 
@@ -186,14 +187,14 @@ SOFTWARE. -->
 				<artifactId>fastjson</artifactId>
 				<version>${fastjson}</version>
 			</dependency>
-			
+
 			<!-- jasypt config file -->
 			<dependency>
 				<groupId>com.github.ulisesbocchio</groupId>
 				<artifactId>jasypt-spring-boot-starter</artifactId>
 				<version>${jasypt-spring-boot-starter.version}</version>
 			</dependency>
-			
+
 			<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
@@ -237,7 +238,7 @@ SOFTWARE. -->
 				<artifactId>commons-io</artifactId>
 				<version>${commons-io.version}</version>
 			</dependency>
-			
+
 			<!-- querydsl -->
 			<dependency>
 				<groupId>com.querydsl</groupId>
@@ -261,21 +262,21 @@ SOFTWARE. -->
 	            <artifactId>UserAgentUtils</artifactId>
 	            <version>${user-agent-utils.version}</version>
 	        </dependency>
-	        
+
 	        <!-- hutool-util -->
 			<dependency>
 				<groupId>com.xiaoleilu</groupId>
 				<artifactId>hutool-all</artifactId>
 				<version>${hutool-all}</version>
 			</dependency>
-			
+
 			<!-- tt -->
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>transmittable-thread-local</artifactId>
 				<version>${ttl.version}</version>
 			</dependency>
-			
+
 		</dependencies>
 	</dependencyManagement>
 
@@ -309,7 +310,7 @@ SOFTWARE. -->
 			</snapshots>
 		</repository>
 	</repositories>
-	
+
 	<build>
 		<pluginManagement>
 			<plugins>
