@@ -3,6 +3,11 @@ package com.github.liuweijw.provider.config.properties;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * 分布式Id相关配置
+ * 
+ * @author liuweijw
+ */
 @Setter
 @Getter
 public class IdWorkerProperties {
@@ -23,7 +28,7 @@ public class IdWorkerProperties {
 	private Integer	workerId;
 
 	/**
-	 * 描述 : 缓存前缀,默认'_'
+	 * 缓存前缀,默认'_'
 	 */
 	private String	prefix		= "_";
 

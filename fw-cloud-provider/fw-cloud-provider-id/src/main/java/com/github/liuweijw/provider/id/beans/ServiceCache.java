@@ -5,7 +5,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * 服务缓存
+ * 服务缓存，可以扩展为服务单独部署或者请求远程接口
  * 
  * @author liuweijw
  */

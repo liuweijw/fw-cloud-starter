@@ -6,7 +6,7 @@ import com.github.liuweijw.provider.core.constant.IdWorkerConstant;
 import com.github.liuweijw.provider.core.exception.ServiceRuntimeException;
 
 /**
- * 描述 : 分布式id生成器 <br/>
+ * 分布式id生成器 <br/>
  * 基于twiter的snowflake https://www.cnblogs.com/relucent/p/4955340.html
  * 
  * @author liuweijw
@@ -15,27 +15,27 @@ import com.github.liuweijw.provider.core.exception.ServiceRuntimeException;
 public class IdWorker {
 
 	/**
-	 * 描述 : 机器ID( 0 - 31 )
+	 * 机器ID( 0 - 31 )
 	 */
 	private long	workerId;
 
 	/**
-	 * 描述 : 数据中心ID( 0 - 31 )
+	 * 数据中心ID( 0 - 31 )
 	 */
 	private long	centerId;
 
 	/**
-	 * 描述 : 序列号( 0 - 4095)
+	 * 序列号( 0 - 4095)
 	 */
 	private long	sequence		= 0L;
 
 	/**
-	 * 描述 : 上次生产id时间戳
+	 * 上次生产id时间戳
 	 */
 	private long	lastTimestamp	= -1L;
 
 	/**
-	 * 描述 : 构造函数
+	 * 构造函数
 	 *
 	 * @param workerId
 	 *            workerId
@@ -55,7 +55,7 @@ public class IdWorker {
 	}
 
 	/**
-	 * 描述 : 下一个ID
+	 * 下一个ID
 	 *
 	 * @return ID
 	 */
@@ -77,7 +77,7 @@ public class IdWorker {
 	}
 
 	/**
-	 * 描述 : 获得下一个毫秒数
+	 * 获得下一个毫秒数
 	 *
 	 * @param lastTimestampParam
 	 *            lastTimestampParam
@@ -92,7 +92,7 @@ public class IdWorker {
 	}
 
 	/**
-	 * 描述 : 获得当前时间毫秒数
+	 * 获得当前时间毫秒数
 	 *
 	 * @return 当前时间毫秒数
 	 */
