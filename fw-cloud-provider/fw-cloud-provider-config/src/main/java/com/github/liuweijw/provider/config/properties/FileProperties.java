@@ -26,9 +26,4 @@ public class FileProperties {
 	 */
 	private Map<String, PathMeta>	path;
 
-	/**
-	 * 编码
-	 */
-	private String					encoding	= "UTF-8";
-
 }

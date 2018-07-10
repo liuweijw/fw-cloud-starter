@@ -68,6 +68,7 @@ SOFTWARE. -->
 		<module>fw-cloud-provider-config</module>
 		<module>fw-cloud-provider-redis</module>
 		<module>fw-cloud-provider-id</module>
+		<module>fw-cloud-provider-swagger</module>
 	</modules>
 
 	<dependencyManagement>
