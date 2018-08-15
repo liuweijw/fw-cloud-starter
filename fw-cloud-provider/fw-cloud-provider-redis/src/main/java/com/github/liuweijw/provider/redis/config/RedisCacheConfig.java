@@ -31,7 +31,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class RedisCacheConfig extends CachingConfigurerSupport {
 
 	@Value("${redis.cache.expiration:3600}")
-	private Long	expiration;
+	private Long expiration;
 
 	/**
 	 * Wisely key generator key generator.
@@ -58,7 +58,8 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
 		// 需要如下设置失效时间才能生效
 		RedisCacheConfiguration defaultCacheConfig = RedisCacheConfiguration.defaultCacheConfig();
 		RedisCacheConfiguration expConfiguration = defaultCacheConfig.entryTtl(Duration.ofSeconds(expiration));
-		// RedisCacheConfiguration preFixConfiguration = expConfiguration.prefixKeysWith("omc_");
+		// RedisCacheConfiguration preFixConfiguration =
+		// expConfiguration.prefixKeysWith("omc_");
 		RedisCacheManager cacheManager = new RedisCacheManager(redisCacheWriter, expConfiguration);
 		return cacheManager;
 	}

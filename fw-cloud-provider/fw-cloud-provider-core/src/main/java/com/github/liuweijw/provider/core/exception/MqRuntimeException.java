@@ -7,7 +7,7 @@ package com.github.liuweijw.provider.core.exception;
  */
 public class MqRuntimeException extends RuntimeException {
 
-	private static final long	serialVersionUID	= -631971868622312213L;
+	private static final long serialVersionUID = -631971868622312213L;
 
 	public MqRuntimeException(String message) {
 		super(message);

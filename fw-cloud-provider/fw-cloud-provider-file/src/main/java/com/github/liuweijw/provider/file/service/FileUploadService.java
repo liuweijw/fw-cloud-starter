@@ -24,8 +24,7 @@ public interface FileUploadService {
 	 *            文件类别pathType
 	 * @param file
 	 *            文件
-	 * @return FileModel
-	 *         返回文件Model
+	 * @return FileModel 返回文件Model
 	 * @throws IOException
 	 *             数据流异常
 	 */
@@ -34,8 +33,7 @@ public interface FileUploadService {
 	/**
 	 * 获取文件信息
 	 * 
-	 * @return attId
-	 *         返回文件attId
+	 * @return attId 返回文件attId
 	 * @throws IOException
 	 *             数据流异常
 	 */
@@ -44,8 +42,7 @@ public interface FileUploadService {
 	/**
 	 * 删除文件
 	 * 
-	 * @return attId
-	 *         返回文件attId
+	 * @return attId 返回文件attId
 	 * @throws IOException
 	 *             数据流异常
 	 */

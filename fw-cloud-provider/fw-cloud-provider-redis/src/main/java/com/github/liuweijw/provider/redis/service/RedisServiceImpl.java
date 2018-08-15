@@ -8,8 +8,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.SetOperations;
@@ -22,6 +20,8 @@ import com.github.liuweijw.commons.utils.PublicHelper;
 import com.github.liuweijw.commons.utils.StringHelper;
 import com.github.liuweijw.provider.config.properties.ConfigProperties;
 import com.github.liuweijw.provider.core.exception.ServiceRuntimeException;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * The class Redis service.
@@ -62,7 +62,8 @@ public class RedisServiceImpl implements RedisService {
 	public String get(String key) {
 		String value = null;
 		ValueOperations<String, String> ops = rt.opsForValue();
-		if (rt.hasKey(key)) value = ops.get(key);
+		if (rt.hasKey(key))
+			value = ops.get(key);
 		log.info("redis get. [OK] key={}, value={}", key, value);
 		return value;
 	}
@@ -70,7 +71,8 @@ public class RedisServiceImpl implements RedisService {
 	@Override
 	public <T> T get(String key, Class<T> obj) {
 		String value = get(key);
-		if (null == value) return null;
+		if (null == value)
+			return null;
 		try {
 			return JSONObject.parseObject(value, obj);
 		} catch (Exception e) {
@@ -108,7 +110,7 @@ public class RedisServiceImpl implements RedisService {
 
 	@Override
 	public void set(String key, String value, long timeout, TimeUnit unit) {
-		if (StringHelper.isNotEmpty(key))
+		if (StringHelper.isEmpty(key))
 			throw new ServiceRuntimeException("Redis key is not null");
 
 		ValueOperations<String, String> ops = rt.opsForValue();
@@ -167,7 +169,8 @@ public class RedisServiceImpl implements RedisService {
 	@Override
 	public void setHash(String key, Map<String, Object> map, long timeout, TimeUnit unit) {
 		HashOperations<String, String, Object> hash = rt.opsForHash();
-		if (null == map || map.size() == 0) return;
+		if (null == map || map.size() == 0)
+			return;
 		map.forEach((k, v) -> {
 			if (!(v instanceof String)) {
 				map.put(k, JSONObject.toJSONString(v));
@@ -175,7 +178,9 @@ public class RedisServiceImpl implements RedisService {
 		});
 		hash.putAll(key, map);
 		this.expire(key, timeout, unit);
-		log.info("redis setHash - 同时将多个 field-value (域-值)对设置到哈希表 key 中. [ok] key={}, map={}, timeout={}, unit={}", key, map, timeout, unit);
+		log.info(
+				"redis setHash - 同时将多个 field-value (域-值)对设置到哈希表 key 中. [ok] key={}, map={}, timeout={}, unit={}", key,
+				map, timeout, unit);
 	}
 
 	@Override
@@ -189,15 +194,20 @@ public class RedisServiceImpl implements RedisService {
 	@Override
 	public <T> T getHash(String key, String field, Class<T> clazz) {
 		HashOperations<String, String, T> hash = rt.opsForHash();
-		if (!rt.hasKey(key)) return null;
+		if (!rt.hasKey(key))
+			return null;
 		T value = hash.get(key, field);
-		if (PublicHelper.isEmpty(value)) return null;
+		if (PublicHelper.isEmpty(value))
+			return null;
 		log.info("redis getHash - 根据key获取给定字段的值. [OK] key={}, field={}, value={}", key, field, value);
-		if (clazz == String.class) return value;
+		if (clazz == String.class)
+			return value;
 		try {
 			return JSONObject.parseObject(String.valueOf(value), clazz);
 		} catch (Exception e) {
-			log.error("redis getHash - 根据key获取给定字段的值. [OK] key={}, field={}, value={} 转换出现错误{}", key, field, value, e.getMessage());
+			log.error(
+					"redis getHash - 根据key获取给定字段的值. [OK] key={}, field={}, value={} 转换出现错误{}", key, field, value,
+					e.getMessage());
 			return null;
 		}
 	}

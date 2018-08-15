@@ -48,12 +48,12 @@ public class IdWorkerFactory {
 	/**
 	 * key的过期时间
 	 */
-	private static final long		EXPIRATION		= 600;											// 10分钟
+	private static final long		EXPIRATION		= 600; // 10分钟
 
 	/**
 	 * job执行时间
 	 */
-	private static final long		JOB_RUN_TIME	= 60 * 9 * 1000l;								// 9分钟
+	private static final long		JOB_RUN_TIME	= 60 * 9 * 1000l; // 9分钟
 
 	/**
 	 * 本地缓存 ( 线程安全 )
@@ -298,7 +298,8 @@ public class IdWorkerFactory {
 	 *            参数
 	 * @return ID
 	 */
-	private List<String> restBatchNextId(IdWorkerWrapper idWorkerWrapper, int count, String serviceCode, Map<String, Object> uriVariables) {
+	private List<String> restBatchNextId(IdWorkerWrapper idWorkerWrapper, int count, String serviceCode,
+			Map<String, Object> uriVariables) {
 		try {
 			// 远程请求
 			// result
@@ -320,7 +321,8 @@ public class IdWorkerFactory {
 	 * @return IdWorkerWrapper
 	 */
 	private synchronized IdWorkerWrapper getIdWorkerWrapper() {
-		long centerWorkId = System.currentTimeMillis() & ~(-1L << (IdWorkerConstant.WORKER_ID_BITS + IdWorkerConstant.DATACENTER_ID_BITS));
+		long centerWorkId = System.currentTimeMillis()
+				& ~(-1L << (IdWorkerConstant.WORKER_ID_BITS + IdWorkerConstant.DATACENTER_ID_BITS));
 		return this.get(centerWorkId);
 	}
 
@@ -333,7 +335,8 @@ public class IdWorkerFactory {
 	 */
 	private IdWorkerWrapper get(long centerWorkId) {
 		long workerId = centerWorkId & ~(-1L << IdWorkerConstant.WORKER_ID_BITS);
-		long centerId = (centerWorkId >> IdWorkerConstant.WORKER_ID_BITS) & ~(-1L << IdWorkerConstant.DATACENTER_ID_BITS);
+		long centerId = (centerWorkId >> IdWorkerConstant.WORKER_ID_BITS)
+				& ~(-1L << IdWorkerConstant.DATACENTER_ID_BITS);
 		return this.get(centerId, workerId);
 	}
 
@@ -348,12 +351,15 @@ public class IdWorkerFactory {
 	 */
 	private IdWorkerWrapper get(long centerId, long workerId) {
 		// 值判断
-		if (workerId > IdWorkerConstant.MAX_WORKER_ID || workerId < 0) { throw new IllegalArgumentException(String.format(
-				"worker Id can't be greater than %d or less than 0", IdWorkerConstant.MAX_WORKER_ID)); }
-		if (centerId > IdWorkerConstant.MAX_DATACENTER_ID || centerId < 0) { throw new IllegalArgumentException(String.format(
-				"datacenter Id can't be greater than %d or less than 0", IdWorkerConstant.MAX_DATACENTER_ID)); }
+		if (workerId > IdWorkerConstant.MAX_WORKER_ID || workerId < 0) { throw new IllegalArgumentException(
+				String.format("worker Id can't be greater than %d or less than 0", IdWorkerConstant.MAX_WORKER_ID)); }
+		if (centerId > IdWorkerConstant.MAX_DATACENTER_ID || centerId < 0) { throw new IllegalArgumentException(
+				String.format(
+						"datacenter Id can't be greater than %d or less than 0",
+						IdWorkerConstant.MAX_DATACENTER_ID)); }
 		// 生成key
-		String key = configProperties.getIdWorker().getPrefix()
+		String key = configProperties.getIdWorker()
+				.getPrefix()
 				.concat(SPLIT)
 				.concat(CACHE_NAME)
 				.concat(SPLIT)

@@ -7,7 +7,7 @@ package com.github.liuweijw.provider.core.exception;
  */
 public class FileException extends RuntimeException {
 
-	private static final long	serialVersionUID	= -7185277089295127324L;
+	private static final long serialVersionUID = -7185277089295127324L;
 
 	public FileException(String message) {
 		super(message);

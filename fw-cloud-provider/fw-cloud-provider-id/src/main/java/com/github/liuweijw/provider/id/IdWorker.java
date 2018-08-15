@@ -44,11 +44,13 @@ public class IdWorker {
 	 */
 	public IdWorker(long workerId, long centerId) {
 		if (workerId > IdWorkerConstant.MAX_WORKER_ID || workerId < 0)
-			throw new IllegalArgumentException(String.format(
-					"worker Id can't be greater than %d or less than 0", IdWorkerConstant.MAX_WORKER_ID));
+			throw new IllegalArgumentException(
+					String.format("worker Id can't be greater than %d or less than 0", IdWorkerConstant.MAX_WORKER_ID));
 		if (centerId > IdWorkerConstant.MAX_DATACENTER_ID || centerId < 0)
-			throw new IllegalArgumentException(String.format(
-					"datacenter Id can't be greater than %d or less than 0", IdWorkerConstant.MAX_DATACENTER_ID));
+			throw new IllegalArgumentException(
+					String.format(
+							"datacenter Id can't be greater than %d or less than 0",
+							IdWorkerConstant.MAX_DATACENTER_ID));
 		this.workerId = workerId;
 		this.centerId = centerId;
 		log.info("centerId:{},workerId:{}", this.centerId, this.workerId);
@@ -62,7 +64,9 @@ public class IdWorker {
 	public synchronized long nextId() {
 		long timestamp = timeGen();
 		if (timestamp < lastTimestamp)
-			throw new ServiceRuntimeException(String.format("Clock moved backwards. Refusing to generate id for %d milliseconds", lastTimestamp - timestamp));
+			throw new ServiceRuntimeException(
+					String.format(
+							"Clock moved backwards. Refusing to generate id for %d milliseconds", lastTimestamp - timestamp));
 		if (lastTimestamp == timestamp) {
 			sequence = (sequence + 1) & IdWorkerConstant.SEQUENCE_MASK;
 			if (sequence == 0) {
@@ -72,8 +76,9 @@ public class IdWorker {
 			sequence = 0L;
 		}
 		lastTimestamp = timestamp;
-		return ((timestamp - IdWorkerConstant.TWEPOCH) << IdWorkerConstant.TIMESTAMP_LEFT_SHIFT) | (centerId << IdWorkerConstant.DATACENTER_ID_SHIFT)
-				| (workerId << IdWorkerConstant.WORKER_ID_SHIFT) | sequence;
+		return ((timestamp - IdWorkerConstant.TWEPOCH) << IdWorkerConstant.TIMESTAMP_LEFT_SHIFT)
+				| (centerId << IdWorkerConstant.DATACENTER_ID_SHIFT) | (workerId << IdWorkerConstant.WORKER_ID_SHIFT)
+				| sequence;
 	}
 
 	/**

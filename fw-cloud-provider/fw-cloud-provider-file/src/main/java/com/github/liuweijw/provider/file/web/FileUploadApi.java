@@ -42,8 +42,7 @@ public interface FileUploadApi {
 	@ApiImplicitParams({
 			@ApiImplicitParam(paramType = "form", name = "pathCode", value = "路径代码", required = true, dataType = "string"),
 			@ApiImplicitParam(paramType = "form", name = "pathType", value = "模块代码", required = true, dataType = "string"),
-			@ApiImplicitParam(paramType = "form", name = "file", value = "文件", required = true, dataType = "__file")
-	})
+			@ApiImplicitParam(paramType = "form", name = "file", value = "文件", required = true, dataType = "__file") })
 	@RequestMapping(value = "/file/upload", method = RequestMethod.POST)
 	R<FileModel> upload(String pathCode, String pathType, MultipartFile file) throws IOException;
 
@@ -61,8 +60,7 @@ public interface FileUploadApi {
 	@ApiOperation(value = "批量上传", notes = "批量上传文件")
 	@ApiImplicitParams({
 			@ApiImplicitParam(paramType = "form", name = "pathCode", value = "路径代码", required = true, dataType = "string"),
-			@ApiImplicitParam(paramType = "form", name = "files", value = "文件清单", required = true, allowMultiple = true, dataType = "__file")
-	})
+			@ApiImplicitParam(paramType = "form", name = "files", value = "文件清单", required = true, allowMultiple = true, dataType = "__file") })
 	@RequestMapping(value = "/file/upload/batch", method = RequestMethod.POST)
 	R<List<FileModel>> batchUpload(String pathCode, String pathType, List<MultipartFile> files) throws IOException;
 

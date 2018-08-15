@@ -48,8 +48,7 @@ public class RedisDistributedLock {
 	 *            timeUnit
 	 * @param lockValue
 	 *            lockValue 值
-	 * @return RedisLockResult
-	 *         返回值
+	 * @return RedisLockResult 返回值
 	 */
 	public RedisLockResult lockAndGet(String key, long timeout, TimeUnit timeUnit, String lockValue) {
 		RedisLockResult lockResult = new RedisLockResult();

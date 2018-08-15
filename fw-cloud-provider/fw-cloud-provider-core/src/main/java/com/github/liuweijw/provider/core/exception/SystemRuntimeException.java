@@ -7,7 +7,7 @@ package com.github.liuweijw.provider.core.exception;
  */
 public class SystemRuntimeException extends RuntimeException {
 
-	private static final long	serialVersionUID	= -8601534347656439209L;
+	private static final long serialVersionUID = -8601534347656439209L;
 
 	public SystemRuntimeException(String message) {
 		super(message);

@@ -19,11 +19,11 @@ public class FileUtil {
 	 * 
 	 * @param filePath
 	 *            加密字符串
-	 * @return
-	 *         null 加密失败
+	 * @return null 加密失败
 	 */
 	public static String encodeBase64(String filePath) {
-		if (PublicHelper.isEmpty(filePath)) return "";
+		if (PublicHelper.isEmpty(filePath))
+			return "";
 		try {
 			return new String(Base64.encodeBase64(filePath.getBytes(FileConstant.ENCODING)), FileConstant.ENCODING);
 		} catch (UnsupportedEncodingException e) {
@@ -37,11 +37,11 @@ public class FileUtil {
 	 * 
 	 * @param filePath
 	 *            解密字符串
-	 * @return
-	 *         null 解密失败
+	 * @return null 解密失败
 	 */
 	public static String decodeBase64(String filePath) {
-		if (PublicHelper.isEmpty(filePath)) return "";
+		if (PublicHelper.isEmpty(filePath))
+			return "";
 		try {
 			return new String(Base64.decodeBase64(filePath.getBytes(FileConstant.ENCODING)), FileConstant.ENCODING);
 		} catch (UnsupportedEncodingException e) {

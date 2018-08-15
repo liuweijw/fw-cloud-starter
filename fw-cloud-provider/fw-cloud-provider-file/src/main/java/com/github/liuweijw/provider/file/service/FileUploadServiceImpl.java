@@ -89,7 +89,8 @@ public class FileUploadServiceImpl implements FileUploadService {
 		// 获得文件对象(目录)
 		File dest = new File(absolutePath);
 		// 创建目录
-		if (!dest.exists()) dest.mkdirs();
+		if (!dest.exists())
+			dest.mkdirs();
 		// 拼接绝对路径(文件)
 		String absoluteFilePath = rootPath + fileModel.getRelativePath();
 		// 获得文件对象
@@ -149,7 +150,8 @@ public class FileUploadServiceImpl implements FileUploadService {
 		// 获得资源对象
 		FileSystemResource fileResource = new FileSystemResource(absolutePath);
 		// 资源存在则删除
-		if (fileResource.exists()) fileResource.getFile().delete();
+		if (fileResource.exists())
+			fileResource.getFile().delete();
 
 		// 异步文件信息入库
 		FileMsgModel fileMsgModel = new FileMsgModel();
@@ -178,7 +180,8 @@ public class FileUploadServiceImpl implements FileUploadService {
 		// 输出文件
 		final int buffInt = 1024;
 		byte[] buff = new byte[buffInt];
-		try (OutputStream os = response.getOutputStream(); BufferedInputStream bis = new BufferedInputStream(fsr.getInputStream())) { // NOSONAR
+		try (OutputStream os = response.getOutputStream();
+				BufferedInputStream bis = new BufferedInputStream(fsr.getInputStream())) { // NOSONAR
 			int i = bis.read(buff);
 			while (i != -1) {
 				os.write(buff, 0, buff.length);

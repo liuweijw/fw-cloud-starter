@@ -7,7 +7,7 @@ package com.github.liuweijw.provider.core.exception;
  */
 public class ServiceRuntimeException extends RuntimeException {
 
-	private static final long	serialVersionUID	= 7643334187736726895L;
+	private static final long serialVersionUID = 7643334187736726895L;
 
 	public ServiceRuntimeException(String message) {
 		super(message);
