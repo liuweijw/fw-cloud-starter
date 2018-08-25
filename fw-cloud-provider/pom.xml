@@ -70,6 +70,8 @@ SOFTWARE. -->
 		<module>fw-cloud-provider-id</module>
 		<module>fw-cloud-provider-swagger</module>
 		<module>fw-cloud-provider-file</module>
+		<module>fw-cloud-provider-rest</module>
+		<module>fw-cloud-provider-rabbitmq</module>
 	</modules>
 
 	<dependencyManagement>
