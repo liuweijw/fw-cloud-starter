@@ -30,5 +30,6 @@ public class WechatProperties {
 	/**
 	 * 公众号授权服务接口URL
 	 */
-	private String	webchat_openid;
+	private String	webchat_openid_auth;
+
 }
