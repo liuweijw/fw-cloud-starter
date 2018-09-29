@@ -26,7 +26,7 @@ SOFTWARE. -->
 
 	<groupId>com.github.liuweijw.provider</groupId>
 	<artifactId>fw-cloud-provider</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>liuweijw cloud project</name>
@@ -58,7 +58,7 @@ SOFTWARE. -->
 		<hutool-all>3.3.2</hutool-all>
 		<user-agent-utils.version>1.21</user-agent-utils.version>
 		<cloud-commons.version>1.0.6-SNAPSHOT</cloud-commons.version>
-		<cloud-provider.version>1.0.0-SNAPSHOT</cloud-provider.version>
+		<cloud-provider.version>1.0.1-SNAPSHOT</cloud-provider.version>
 		<hibernate.validator.version>6.0.10.Final</hibernate.validator.version>
 		<hibernate.core.version>5.3.1.Final</hibernate.core.version>
 	</properties>
