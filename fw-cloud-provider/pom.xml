@@ -45,6 +45,7 @@ SOFTWARE. -->
 		<lombok.version>1.18.0</lombok.version>
 		<swagger2.version>2.9.2</swagger2.version>
 		<jjwt>0.9.0</jjwt>
+		<jackson-databind.version>2.8.7</jackson-databind.version>
 		<fastjson>1.2.47</fastjson>
 		<mysql.version>5.1.46</mysql.version>
 		<querydsl.version>4.2.1</querydsl.version>
@@ -57,6 +58,9 @@ SOFTWARE. -->
 		<zuul-ratelimit>LATEST</zuul-ratelimit>
 		<hutool-all>3.3.2</hutool-all>
 		<user-agent-utils.version>1.21</user-agent-utils.version>
+		<mybatis-plus.version>2.1.9</mybatis-plus.version>
+        <mybatisplus-spring-boot-starter.version>1.0.5</mybatisplus-spring-boot-starter.version>
+        <velocity-engine-core.version>2.0</velocity-engine-core.version>
 		<cloud-commons.version>1.0.6-SNAPSHOT</cloud-commons.version>
 		<cloud-provider.version>1.0.1-SNAPSHOT</cloud-provider.version>
 		<hibernate.validator.version>6.0.10.Final</hibernate.validator.version>
@@ -72,6 +76,7 @@ SOFTWARE. -->
 		<module>fw-cloud-provider-file</module>
 		<module>fw-cloud-provider-rest</module>
 		<module>fw-cloud-provider-rabbitmq</module>
+        <module>fw-cloud-provider-mybatis</module>
 	</modules>
 
 	<dependencyManagement>
@@ -191,6 +196,12 @@ SOFTWARE. -->
 				<artifactId>fastjson</artifactId>
 				<version>${fastjson}</version>
 			</dependency>
+			<!--jackson json:高性能的JSON处理 -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId> 
+				<version>${jackson-databind.version}</version>
+			</dependency>
 
 			<!-- jasypt config file -->
 			<dependency>
@@ -280,6 +291,33 @@ SOFTWARE. -->
 				<artifactId>transmittable-thread-local</artifactId>
 				<version>${ttl.version}</version>
 			</dependency>
+			
+			<!--mybatis-plus-->
+	        <dependency>
+	            <groupId>com.baomidou</groupId>
+	            <artifactId>mybatis-plus</artifactId>
+	            <version>${mybatis-plus.version}</version>
+	        </dependency>
+	        
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatisplus-spring-boot-starter</artifactId>
+				<version>${mybatisplus-spring-boot-starter.version}</version>
+				<!-- <exclusions>
+					<exclusion>
+						<groupId>org.apache.tomcat</groupId>
+						<artifactId>tomcat-jdbc</artifactId>
+					</exclusion>
+				</exclusions> -->
+			</dependency>
+			
+			<!--myabtis-plus 代码生成依赖-->
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity-engine-core</artifactId>
+				<version>${velocity-engine-core.version}</version>
+			</dependency>
+			<!--mybatis-plus-->
 
 		</dependencies>
 	</dependencyManagement>
