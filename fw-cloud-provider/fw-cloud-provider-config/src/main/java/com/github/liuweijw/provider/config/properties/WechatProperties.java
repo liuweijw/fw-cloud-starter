@@ -32,4 +32,9 @@ public class WechatProperties {
 	 */
 	private String	webchat_openid_auth;
 
+	/**
+	 * 微信开发平台的APPID
+	 */
+	private String	webchat_appid;
+
 }
