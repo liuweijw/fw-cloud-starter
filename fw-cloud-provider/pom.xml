@@ -45,7 +45,7 @@ SOFTWARE. -->
 		<lombok.version>1.18.0</lombok.version>
 		<swagger2.version>2.9.2</swagger2.version>
 		<jjwt>0.9.0</jjwt>
-		<jackson-databind.version>2.9.9</jackson-databind.version>
+		<jackson-databind.version>2.9.10.7</jackson-databind.version>
 		<fastjson>1.2.47</fastjson>
 		<mysql.version>5.1.46</mysql.version>
 		<querydsl.version>4.2.1</querydsl.version>
