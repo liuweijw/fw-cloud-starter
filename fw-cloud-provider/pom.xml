@@ -64,7 +64,7 @@ SOFTWARE. -->
 		<cloud-commons.version>1.0.6-SNAPSHOT</cloud-commons.version>
 		<cloud-provider.version>1.0.1-SNAPSHOT</cloud-provider.version>
 		<hibernate.validator.version>6.0.10.Final</hibernate.validator.version>
-		<hibernate.core.version>5.3.1.Final</hibernate.core.version>
+		<hibernate.core.version>5.4.24.Final</hibernate.core.version>
 	</properties>
 
 	<modules>
